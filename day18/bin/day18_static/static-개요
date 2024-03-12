@@ -1,0 +1,61 @@
+static
+
+	1. static 의 사전적 의미 : 정적
+	2. 정적 : 미리 만듬 (컴파일 때 이미 만들어져 있다.)
+	   동적 : 나중에 만듬 (new를 의미)
+	3. static 사용 이유
+		1) 모든 객체(인스턴스)가 특정 값을 공유하기 위해서
+		2) 객체(인스턴스) 생성(new) 없이 클래스를 사용하기 위해서
+	4. static 동작
+		1) static 멤버(필드나 메소드)는 프로그램 실행 직전에 미리 만들어진다.
+		2) 객체(인스턴스) 생성되기 전에 미리 만들어진다.
+		3) 객체(인스턴스) 생성(new) 없이도 만들어진다.
+		4) 하나 static 멤버(필드나 메소드)가 만들어지면 모든 객체(인스턴스)가 공유한다.
+	5. static 멤버 접근 방식
+		1) 필드 : 클래스명.필드명
+		2) 메소드 : 클래스명.메소드명()
+	6. static 메소드는 인스턴스 변수(non-static 필드)를 사용할 수 없다.
+	
+		class Person{
+		
+			// Field
+			static String country = "KOREA";	// static 필드는 new Person("홍길동") 이전에도 존재한다.
+			String name;	// non-static 필드는 new Person("홍길동") 이후에 값이 존재할 수 있다.
+			
+			// Constructor
+			Person(String name){
+				this.name = name;
+			}
+		
+			// Method
+			static void printPerson(){	//static 메소드는 new Person("홍길동") 이전에도 존재한다.
+				System.out.println("국가 : " + country); (O)
+				System.out.println("성명 : " + name);	(X)
+				// non-static 필드인 name은 new Person("홍길동") 이후에만 존재할 수 있으므로 static 메소드에 올 수 없다.
+				// name 라는 필드는 new 로 객체를 만들어야 생성되기 때문에
+				// 그 전부터 만들어지는 static 메소드 중 요소로 name 필드를 사용할 수 없다.
+				// 설계도에는 있지만 아직 실체가 없는 로직이기 때문이다.
+			}
+		}
+		
+	7. 어떤 메소드를 static 으로 처리할 것인가?
+	메소드 내부에서 인스턴스 변수(non-static 필드)를 사용하지 않는다면 static을 사용하는 것이 좋다. (성능에 도움이 됨)
+	// run 타임을 줄일 수 있음
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
